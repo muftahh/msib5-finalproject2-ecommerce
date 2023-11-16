@@ -23,4 +23,13 @@
     <string name="nama_lengkap">Nama Lengkap</string>
     <string name="id_staff">ID Staff</string>
     <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="profile">Profile</string>
+    <string name="id">ID</string>
+    <string name="add_stok">Tambah Stok Barang</string>
+    <string name="id_barang">ID Barang</string>
+    <string name="kategori_barang">Kategori Barang</string>
+    <string name="nama_barang">Nama Barang</string>
+    <string name="brand">Brand</string>
+    <string name="jumalah_barang">Jumalah Barang</string>
+    <string name="harga_barang">Harga Barang</string>
 </resources>
