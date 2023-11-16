@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <color name="Button_Login">#F2796B</color>
+    <color name="Another_Button">#FFA7A7</color>
+    
+    <color name="Color_Tittle_Text">#F2796B</color>
 </resources>
