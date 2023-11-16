@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +14,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerce"
         tools:targetApi="31">
+        <activity
+            android:name=".RegisterStaffActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginStaffActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WelcomeActivity"
+            android:exported="false" />
         <activity
             android:name=".LoginUsersActivity"
             android:exported="false" />
