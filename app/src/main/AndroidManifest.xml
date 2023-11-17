@@ -15,6 +15,15 @@
         android:theme="@style/Theme.ECommerce"
         tools:targetApi="31">
         <activity
+            android:name=".KategoriProdukActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailProdukActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListProdukActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddStokActivity"
             android:exported="false" />
         <activity
