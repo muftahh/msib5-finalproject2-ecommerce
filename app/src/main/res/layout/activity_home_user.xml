@@ -4,148 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminActivity"
-    android:padding="8dp">
-
-    <LinearLayout
-        android:id="@+id/layoutHomeUser1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lets Start "
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Shopping !!"
-            android:textColor="@color/pink"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+    tools:context=".AdminActivity">
 
     <TextView
-        android:id="@+id/layoutHomeUser2"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="38dp"
-        android:text="PRODUCT"
-        android:textColor="@color/red"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="345dp"
+        android:layout_marginEnd="177dp"
+        android:layout_marginBottom="367dp"
+        android:text="home users"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutHomeUser1"
-        tools:ignore="MissingConstraints" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/layoutHomeUser2"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="20dp">
-
-        <ImageButton
-            android:id="@+id/btnPakaian"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:scaleType="fitXY"
-            android:src="@drawable/logo_pakaian"
-            />
-
-        <TextView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pakaian"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="20dp"/>
-
-        <ImageButton
-            android:id="@+id/btnBuku"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:scaleType="fitXY"
-            android:src="@drawable/logo_buku"
-            />
-        <TextView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Buku"
-            android:textSize="15sp"
-            android:textStyle="bold"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/layoutHomeUser2"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="20dp">
-
-        <ImageButton
-            android:id="@+id/btnElektronik"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:scaleType="fitXY"
-            android:src="@drawable/logo_elektronik"
-            />
-
-        <TextView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Elektronik"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="20dp"/>
-
-        <ImageButton
-            android:id="@+id/btnLainnya"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:scaleType="fitXY"
-            android:src="@drawable/logo_others"
-            />
-        <TextView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lainnya"
-            android:textSize="15sp"
-            android:textStyle="bold"/>
-
-    </LinearLayout>
-
-
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-
