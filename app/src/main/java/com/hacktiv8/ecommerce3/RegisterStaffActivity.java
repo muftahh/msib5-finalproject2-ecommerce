@@ -2,9 +2,13 @@ package com.hacktiv8.ecommerce3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +22,10 @@ import java.util.Objects;
 
 public class RegisterStaffActivity extends AppCompatActivity {
     private EditText mNamaLengkap, mEmail, mPassword, mKonfirmasiPassword;
+    private TextView errorNamaStaff, errorEmailStaff, errorPasswordStaff, errorKonfirmasiPasswordStaff;
     private FirebaseAuth mAuth;
     ImageButton buttonSave;
+    private ProgressBar progressBarRegStaff;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +39,51 @@ public class RegisterStaffActivity extends AppCompatActivity {
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.pw);
         mKonfirmasiPassword = findViewById(R.id.konfirmasi_pw);
+
+        errorNamaStaff = findViewById(R.id.errorNama_lengkap);
+        errorEmailStaff = findViewById(R.id.errorEmail);
+        errorPasswordStaff = findViewById(R.id.errorPw);
+        errorKonfirmasiPasswordStaff = findViewById(R.id.errorKonfirmasi_pw);
+
+        progressBarRegStaff = findViewById(R.id.progressBarRegStaff);
         buttonSave = findViewById(R.id.save);
 
         buttonSave.setOnClickListener(v -> registerNewStaff());
 
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+                updateProgressBarRegStaff();
+            }
+        };
+        mNamaLengkap.addTextChangedListener(textWatcher);
+        mEmail.addTextChangedListener(textWatcher);
+        mPassword.addTextChangedListener(textWatcher);
+        mKonfirmasiPassword.addTextChangedListener(textWatcher);
+    }
+
+    private void updateProgressBarRegStaff() {
+        int filledEditTextCount = 0;
+        if (!TextUtils.isEmpty(mNamaLengkap.getText())) {
+            filledEditTextCount++;
+        }
+        if (!TextUtils.isEmpty(mEmail.getText())) {
+            filledEditTextCount++;
+        }
+        if (!TextUtils.isEmpty(mPassword.getText())) {
+            filledEditTextCount++;
+        }
+        if (!TextUtils.isEmpty(mKonfirmasiPassword.getText())) {
+            filledEditTextCount++;
+        }
+        int progress = filledEditTextCount * 25;
+        progressBarRegStaff.setProgress(progress);
     }
 
 
@@ -48,27 +95,44 @@ public class RegisterStaffActivity extends AppCompatActivity {
         rePassword = mKonfirmasiPassword.getText().toString();
 
 
+        // Validasi Nama
         if (TextUtils.isEmpty(namaLengkap)) {
-            Toast.makeText(getApplicationContext(), "Nama tidak boleh kosong!", Toast.LENGTH_LONG).show();
+            errorNamaStaff.setText("Nama tidak boleh kosong");
             return;
+        } else {
+            errorNamaStaff.setText(null);
         }
+
+        // Validasi Email
         if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(), "Email tidak boleh kosong!", Toast.LENGTH_LONG).show();
+            errorEmailStaff.setText("Email tidak boleh kosong");
             return;
+        } else {
+            errorEmailStaff.setText(null);
         }
+
+        // Validasi Password
         if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(), "Password tidak boleh kosong", Toast.LENGTH_LONG).show();
+            errorPasswordStaff.setText("Password tidak boleh kosong");
             return;
-        }
-        if (password.length() < 6) {
-            Toast.makeText(getApplicationContext(), "Isikan Password minimal 6 karakter", Toast.LENGTH_LONG).show();
+        } else if (password.length() < 6) {
+            errorPasswordStaff.setText("Isikan Password minimal 6 karakter");
             return;
+        } else {
+            errorPasswordStaff.setText(null);
         }
-        if (!password.equals(rePassword)) {
-            Toast.makeText(getApplicationContext(), "Password tidak sama, silahkan coba lagi", Toast.LENGTH_LONG).show();
+
+        // Validasi Konfirmasi Password
+        if (TextUtils.isEmpty(rePassword)) {
+            errorKonfirmasiPasswordStaff.setText("Konfirmasi password tidak boleh kosong");
+            return;
+        } else if (!password.equals(rePassword)) {
+            errorKonfirmasiPasswordStaff.setText("Password tidak sama, silahkan coba lagi");
             mPassword.setText("");
             mKonfirmasiPassword.setText("");
             return;
+        } else {
+            errorKonfirmasiPasswordStaff.setText(null);
         }
 
         // Pengecekan apakah email sudah terdaftar sebelumnya
