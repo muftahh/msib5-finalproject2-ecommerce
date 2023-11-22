@@ -33,16 +33,26 @@ public class HomeUserActivity extends AppCompatActivity implements View.OnClickL
             String screen = "Kategori Pakaian";
             pakaianIntent.putExtra("namaKategori", screen);
             startActivity(pakaianIntent);
-        } else if (view.getId() == R.id.btnElektronik) {
+        }
+
+        else if (view.getId() == R.id.btnElektronik) {
             Intent elektronikIntent = new Intent(this, KategoriProdukActivity.class);
             String screen = "Kategori Elektronik";
             elektronikIntent.putExtra("namaKategori", screen);
             startActivity(elektronikIntent);
-        } else if (view.getId() == R.id.btnBuku) {
+        }
+
+        else if (view.getId() == R.id.btnBuku) {
+            String childDataBase = "Buku";
             Intent bukuIntent = new Intent(this, ListProdukActivity.class);
+            bukuIntent.putExtra("childDataBase", childDataBase);
             startActivity(bukuIntent);
-        } else if (view.getId() == R.id.btnLainnya) {
+        }
+
+        else if (view.getId() == R.id.btnLainnya) {
+            String childDataBase = "Lainnya";
             Intent lainnyaIntent = new Intent(this, ListProdukActivity.class);
+            lainnyaIntent.putExtra("childDataBase", childDataBase);
             startActivity(lainnyaIntent);
         }
     }

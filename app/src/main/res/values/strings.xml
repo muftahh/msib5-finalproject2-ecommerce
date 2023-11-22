@@ -32,4 +32,17 @@
     <string name="brand">Brand</string>
     <string name="jumalah_barang">Jumalah Barang</string>
     <string name="harga_barang">Harga Barang</string>
+
+    <!-- ......................................................... -->
+    <string name="dropdown_kategoriBarang">Sektor Usaha</string>
+    <string-array name="kategoriBarang_array">
+        <item>Pilih</item>
+        <item>Pakaian_Pria</item>
+        <item>Pakaian_Wanita</item>
+        <item>Koputer</item>
+        <item>Handphone</item>
+        <item>Buku</item>
+        <item>Lainnya</item>
+    </string-array>
+    <!-- ......................................................... -->
 </resources>
