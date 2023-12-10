@@ -3,7 +3,6 @@ package com.hacktiv8.ecommerce3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -18,7 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class AddStokActivity extends AppCompatActivity {
     private EditText namaBarang, brand, jumlahBarang, hargaBarang;
     private Spinner kategoriBarang;
-    private ImageButton buttonSave;
     private TextView errorTextAddStok;
     private DatabaseReference mDataBase;
 
@@ -37,21 +35,19 @@ public class AddStokActivity extends AppCompatActivity {
         hargaBarang = findViewById(R.id.harga_barang);
 
         errorTextAddStok = findViewById(R.id.errorTextAddStok);
-        buttonSave = findViewById(R.id.save);
+        ImageButton buttonSave = findViewById(R.id.save);
 
-        buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addStockProduk();
-            }
-        });
+        buttonSave.setOnClickListener(v -> addStockProduk());
         buttonSave.setOnClickListener(v -> addStockProduk());
     }
 
     private void addStockProduk() {
         String mKategoriBarang, mNamaBarang, mBrand, mJumlahBarang, mHargaBarang;
 
-        mKategoriBarang = kategoriBarang.getSelectedItem().toString();
+        int position = kategoriBarang.getSelectedItemPosition();
+        String[] values = getResources().getStringArray(R.array.kategoriBarang_value);
+        mKategoriBarang = values[position];
+
         mNamaBarang = namaBarang.getText().toString();
         mBrand = brand.getText().toString();
         mJumlahBarang = jumlahBarang.getText().toString();
@@ -62,6 +58,8 @@ public class AddStokActivity extends AppCompatActivity {
             errorTextAddStok.setText("Semua data harus terisi");
             return;
         }
+
+        Toast.makeText(getApplicationContext(), "Sedang Diproses", Toast.LENGTH_LONG).show();
 
         Barang barang = new Barang(mKategoriBarang, mNamaBarang, mBrand, mJumlahBarang, mHargaBarang);
         mDataBase.child(mKategoriBarang).push().setValue(barang).addOnCompleteListener(task -> {
@@ -74,7 +72,6 @@ public class AddStokActivity extends AppCompatActivity {
                 Toast.makeText(AddStokActivity.this, "Gagal menambahkan data", Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
+
 }

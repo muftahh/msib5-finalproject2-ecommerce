@@ -37,7 +37,7 @@ public class KategoriProdukActivity extends AppCompatActivity implements View.On
             kategori2.setText("Pakaian Wanita");
         }
         else if ("Kategori Elektronik".equals(receivedScreen)) {
-            kategori1.setText("Computer");
+            kategori1.setText("Komputer");
             kategori2.setText("Smartphone");
         }
 
@@ -67,7 +67,7 @@ public class KategoriProdukActivity extends AppCompatActivity implements View.On
         else if ("Kategori Elektronik".equals(receivedScreen)){
             if (view.getId() == R.id.btnKategoriProduk1) {
                 //ketika pilihan Komputer
-                String childDataBase = "Koputer";
+                String childDataBase = "Komputer";
                 Intent intentComputer = new Intent(this, ListProdukActivity.class);
                 intentComputer.putExtra("childDataBase", childDataBase);
                 startActivity(intentComputer);

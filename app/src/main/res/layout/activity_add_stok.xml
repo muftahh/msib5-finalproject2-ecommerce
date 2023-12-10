@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="@string/add_stok"
-        android:textColor="@color/pink"
+        android:textColor="#FF5252"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,49 +26,54 @@
         android:layout_width="303dp"
         android:layout_height="46dp"
         android:layout_marginTop="35dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/back_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/back_input"
-        app:layout_constraintTop_toBottomOf="@+id/desc_login" />
+        app:layout_constraintTop_toBottomOf="@+id/desc_login"
+        tools:ignore="ImageContrastCheck" />
 
     <Spinner
         android:id="@+id/kategori_barang"
         android:layout_width="273dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:background="@android:color/transparent"
-        android:entries="@array/kategoriBarang_array"
+        android:entries="@array/kategoriBarang_display"
         android:prompt="@string/dropdown_kategoriBarang"
         app:layout_constraintBottom_toBottomOf="@+id/imageView15"
         app:layout_constraintEnd_toEndOf="@id/imageView15"
         app:layout_constraintStart_toStartOf="@+id/imageView15"
         app:layout_constraintTop_toTopOf="@+id/imageView15"
-        app:layout_constraintVertical_bias="0.473"
-        />
+        app:layout_constraintVertical_bias="0.473" />
+
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="303dp"
         android:layout_height="46dp"
         android:layout_marginTop="25dp"
+        android:src="@drawable/back_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/back_input"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView15"
+        tools:ignore="ImageContrastCheck"
+        android:importantForAccessibility="no" />
 
     <EditText
         android:id="@+id/nama_barang"
         android:layout_width="273dp"
         android:layout_height="48dp"
+        android:autofillHints=""
         android:background="@android:color/transparent"
         android:ems="10"
         android:hint="@string/nama_barang"
         android:inputType="text"
+        android:textColorHint="#757575"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
         app:layout_constraintEnd_toEndOf="@id/imageView5"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.473"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.473" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -78,72 +83,82 @@
         android:src="@drawable/back_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        tools:ignore="ImageContrastCheck"
+        android:importantForAccessibility="no" />
 
     <EditText
         android:id="@+id/brand"
         android:layout_width="273dp"
         android:layout_height="48dp"
+        android:autofillHints=""
         android:background="@android:color/transparent"
         android:ems="10"
         android:hint="@string/brand"
         android:inputType="text"
+        android:textColorHint="#757575"
         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="@+id/imageView7"
         app:layout_constraintVertical_bias="0.473"
-        android:autofillHints="" />
+        tools:ignore="TextContrastCheck" />
 
     <ImageView
         android:id="@+id/imageView18"
         android:layout_width="303dp"
         android:layout_height="46dp"
         android:layout_marginTop="25dp"
+        android:importantForAccessibility="no"
         android:src="@drawable/back_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        tools:ignore="ImageContrastCheck" />
 
     <EditText
         android:id="@+id/jumlah_barang"
         android:layout_width="273dp"
         android:layout_height="48dp"
+        android:autofillHints=""
         android:background="@android:color/transparent"
         android:ems="10"
-        android:hint="@string/jumalah_barang"
+        android:hint="@string/jumlah_barang"
         android:inputType="number"
+        android:textColorHint="#757575"
         app:layout_constraintBottom_toBottomOf="@+id/imageView18"
         app:layout_constraintEnd_toEndOf="@+id/imageView18"
         app:layout_constraintStart_toStartOf="@+id/imageView18"
         app:layout_constraintTop_toTopOf="@+id/imageView18"
-        app:layout_constraintVertical_bias="0.473"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.473" />
 
     <ImageView
         android:id="@+id/imageView21"
         android:layout_width="303dp"
         android:layout_height="46dp"
         android:layout_marginTop="25dp"
+        android:importantForAccessibility="no"
         android:src="@drawable/back_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView18" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView18"
+        tools:ignore="ImageContrastCheck" />
 
     <EditText
         android:id="@+id/harga_barang"
         android:layout_width="273dp"
         android:layout_height="48dp"
+        android:autofillHints=""
         android:background="@android:color/transparent"
-        android:hint="@string/harga_barang"
         android:ems="10"
+        android:hint="@string/harga_barang"
         android:inputType="number"
+        android:textColorHint="#757575"
         app:layout_constraintBottom_toBottomOf="@+id/imageView21"
         app:layout_constraintEnd_toEndOf="@+id/imageView21"
         app:layout_constraintStart_toStartOf="@+id/imageView21"
         app:layout_constraintTop_toTopOf="@+id/imageView21"
-        app:layout_constraintVertical_bias="0.473"
-        android:autofillHints=""/>
+        app:layout_constraintVertical_bias="0.473" />
 
     <TextView
         android:id="@+id/errorTextAddStok"
@@ -167,7 +182,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView21"
-        app:layout_constraintVertical_bias="0.473" />
+        tools:ignore="ImageContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

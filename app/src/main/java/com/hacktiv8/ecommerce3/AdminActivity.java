@@ -2,45 +2,39 @@ package com.hacktiv8.ecommerce3;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class AdminActivity extends AppCompatActivity {
 
-    private ImageButton addStaff, addStok, logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
-        addStaff = findViewById(R.id.add_staff);
-        addStok = findViewById(R.id.add_stok);
-        logout = findViewById(R.id.logout);
+        ImageButton addStaff = findViewById(R.id.add_staff);
+        ImageButton addStok = findViewById(R.id.add_stok);
+        ImageButton logout = findViewById(R.id.logout);
 
-        addStaff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), RegisterStaffActivity.class);
-                startActivity(intent);
-            }
+        addStaff.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), RegisterStaffActivity.class);
+            startActivity(intent);
         });
 
-        addStok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), AddStokActivity.class);
-                startActivity(intent);
-            }
+        addStok.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), AddStokActivity.class);
+            startActivity(intent);
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), WelcomeActivity.class);
-                startActivity(intent);
-            }
+        logout.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut(); // ini adalah baris untuk logout
+
+            Intent intent = new Intent(v.getContext(), WelcomeActivity.class);
+            startActivity(intent);
         });
+
     }
 
 }

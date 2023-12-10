@@ -30,19 +30,30 @@
     <string name="kategori_barang">Kategori Barang</string>
     <string name="nama_barang">Nama Barang</string>
     <string name="brand">Brand</string>
-    <string name="jumalah_barang">Jumalah Barang</string>
+    <string name="jumlah_barang">Jumlah Barang</string>
     <string name="harga_barang">Harga Barang</string>
 
     <!-- ......................................................... -->
     <string name="dropdown_kategoriBarang">Sektor Usaha</string>
-    <string-array name="kategoriBarang_array">
+    <string-array name="kategoriBarang_display">
         <item>Pilih</item>
-        <item>Pakaian_Pria</item>
-        <item>Pakaian_Wanita</item>
-        <item>Koputer</item>
+        <item>Pakaian Pria</item>
+        <item>Pakaian Wanita</item>
+        <item>Komputer</item>
         <item>Handphone</item>
         <item>Buku</item>
         <item>Lainnya</item>
     </string-array>
+
+    <string-array name="kategoriBarang_value">
+        <item>Pilih</item>
+        <item>Pakaian_Pria</item>
+        <item>Pakaian_Wanita</item>
+        <item>Komputer</item>
+        <item>Handphone</item>
+        <item>Buku</item>
+        <item>Lainnya</item>
+    </string-array>
+
     <!-- ......................................................... -->
 </resources>

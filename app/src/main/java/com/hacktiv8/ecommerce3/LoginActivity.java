@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -71,6 +72,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        Toast.makeText(getApplicationContext(), "Sedang Diproses", Toast.LENGTH_LONG).show();
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -116,8 +119,13 @@ public class LoginActivity extends AppCompatActivity {
                         });
 
                     } else {
-                        // Login gagal, tampilkan pesan kegagalan
-                        Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
+                        if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                            // Format email tidak valid
+                            Toast.makeText(getApplicationContext(), "Email atau Password Salah, Silahkan periksa kembali", Toast.LENGTH_LONG).show();
+                        } else {
+                            // Kesalahan lain
+                            Toast.makeText(getApplicationContext(), "Login Gagal! Cek koneksi lalu coba lagi", Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
     }

@@ -13,12 +13,6 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class ProdukAdapter extends FirebaseRecyclerAdapter<Barang, ProdukAdapter.viewHolder> {
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
     private final RecyclerViewInterface recyclerViewInterface;
 
     public ProdukAdapter(@NonNull FirebaseRecyclerOptions<Barang> options, RecyclerViewInterface recyclerViewInterface) {
@@ -28,9 +22,14 @@ public class ProdukAdapter extends FirebaseRecyclerAdapter<Barang, ProdukAdapter
 
     @Override
     protected void onBindViewHolder(@NonNull viewHolder holder, int position, @NonNull Barang model) {
-        holder.listNamaProduk.setText(model.getmNamaBarang());
-        holder.listHargaProduk.setText(model.getmHargaBarang());
+        if (position < getItemCount()) {
+            holder.listNamaProduk.setText(model.getmNamaBarang());
+            holder.listHargaProduk.setText(model.getmHargaBarang());
+        } else {
+            // Handle the case where the position is invalid
+        }
     }
+
 
     @NonNull
     @Override
@@ -39,7 +38,7 @@ public class ProdukAdapter extends FirebaseRecyclerAdapter<Barang, ProdukAdapter
         return new viewHolder(view, recyclerViewInterface);
     }
 
-    public static class viewHolder extends RecyclerView.ViewHolder {
+    public class viewHolder extends RecyclerView.ViewHolder {
         TextView listNamaProduk, listHargaProduk;
         ImageButton btnDetailProduk;
 
@@ -50,20 +49,17 @@ public class ProdukAdapter extends FirebaseRecyclerAdapter<Barang, ProdukAdapter
             listHargaProduk = itemView.findViewById(R.id.listHargaProduk);
             btnDetailProduk = itemView.findViewById(R.id.btnDetailProduk);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (recyclerViewInterface != null) {
-                        int position = getBindingAdapterPosition();
+            itemView.setOnClickListener(view -> {
+                if (recyclerViewInterface != null) {
+                    int position = getBindingAdapterPosition();
 
-                        if (position != RecyclerView.NO_POSITION) {
-                            recyclerViewInterface.onDetailClick(position);
-                        }
+                    if (position != RecyclerView.NO_POSITION && position < getItemCount()) {
+                        recyclerViewInterface.onDetailClick(position);
                     }
                 }
             });
-
         }
+
     }
 
 }

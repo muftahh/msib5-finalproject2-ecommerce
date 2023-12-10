@@ -1,12 +1,10 @@
 package com.hacktiv8.ecommerce3;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -142,6 +140,8 @@ public class RegisterUsersActivity extends AppCompatActivity {
         } else {
             errorTextPassword2.setText(null);
         }
+
+        Toast.makeText(getApplicationContext(), "Sedang Diproses", Toast.LENGTH_LONG).show();
 
         // Pengecekan apakah email sudah terdaftar sebelumnya
         mAuth.createUserWithEmailAndPassword(email, password)

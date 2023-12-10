@@ -135,6 +135,8 @@ public class RegisterStaffActivity extends AppCompatActivity {
             errorKonfirmasiPasswordStaff.setText(null);
         }
 
+        Toast.makeText(getApplicationContext(), "Sedang Diproses", Toast.LENGTH_LONG).show();
+
         // Pengecekan apakah email sudah terdaftar sebelumnya
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task1 -> {
