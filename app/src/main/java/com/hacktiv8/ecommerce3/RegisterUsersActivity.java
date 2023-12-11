@@ -1,5 +1,6 @@
 package com.hacktiv8.ecommerce3;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -94,6 +95,7 @@ public class RegisterUsersActivity extends AppCompatActivity {
         progressBarRegUser.setProgress(progress);
     }
 
+    @SuppressLint("SetTextI18n")
     private void registerNewUser() {
         String namaLengkap, email, password,rePassword;
         email = inputEmailMember.getText().toString();
@@ -141,7 +143,7 @@ public class RegisterUsersActivity extends AppCompatActivity {
             errorTextPassword2.setText(null);
         }
 
-        Toast.makeText(getApplicationContext(), "Sedang Diproses", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Menghubungi Server, Silahkan Tunggu", Toast.LENGTH_LONG).show();
 
         // Pengecekan apakah email sudah terdaftar sebelumnya
         mAuth.createUserWithEmailAndPassword(email, password)

@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        Toast.makeText(getApplicationContext(), "Sedang Diproses", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Menghubungi Server, Silahkan Tunggu", Toast.LENGTH_LONG).show();
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
@@ -95,14 +95,17 @@ public class LoginActivity extends AppCompatActivity {
                                     if ("admins".equals(role)) {
                                         Toast.makeText(getApplicationContext(), "Welcome, Admin!", Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                     } else if ("staffs".equals(role)) {
                                         Toast.makeText(getApplicationContext(), "Welcome, Staff!", Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(getApplicationContext(), StaffActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Welcome, Members!", Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(getApplicationContext(), HomeUserActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                     }
                                 } else {

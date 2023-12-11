@@ -3,6 +3,7 @@ package com.hacktiv8.ecommerce3;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,8 +14,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ListProdukActivity extends AppCompatActivity implements RecyclerViewInterface {
     private RecyclerView recyclerViewProduk;
     private String mChildDataBase;
-    ProdukAdapter produkAdapter;
-    FirebaseRecyclerOptions<Barang> options;
+    private ProdukAdapter produkAdapter;
+    private FirebaseRecyclerOptions<Barang> options;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,32 +31,50 @@ public class ListProdukActivity extends AppCompatActivity implements RecyclerVie
         recyclerViewProduk.setLayoutManager(new LinearLayoutManager(this));
 
         options = new FirebaseRecyclerOptions.Builder<Barang>()
-                        .setQuery(FirebaseDatabase.getInstance("https://hacktiv8-ecommerce3-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Barang").child(mChildDataBase), Barang.class)
-                        .build();
+                .setQuery(FirebaseDatabase.getInstance("https://hacktiv8-ecommerce3-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Barang").child(mChildDataBase), Barang.class)
+                .build();
+
         produkAdapter = new ProdukAdapter(options, this);
         recyclerViewProduk.setAdapter(produkAdapter);
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent intent = new Intent(ListProdukActivity.this, HomeUserActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
     }
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
-        produkAdapter.startListening();
+        if (produkAdapter != null) {
+            produkAdapter.startListening();
+        }
     }
 
     @Override
-    protected void onStop(){
+    protected void onStop() {
         super.onStop();
-        produkAdapter.stopListening();
+        if (produkAdapter != null) {
+            produkAdapter.stopListening();
+        }
     }
 
     @Override
     public void onDetailClick(int position) {
-        //Mengirim data ke DetailProdukActivity
+        // Mengirim data ke DetailProdukActivity dan kategori
         Intent intent = new Intent(ListProdukActivity.this, DetailProdukActivity.class);
         intent.putExtra("mDetailNamaProduk", options.getSnapshots().get(position).mNamaBarang);
         intent.putExtra("mDetailMerekProduk", options.getSnapshots().get(position).mBrand);
         intent.putExtra("mDetailStokProduk", options.getSnapshots().get(position).mJumlahBarang);
         intent.putExtra("mDetailHargaProduk", options.getSnapshots().get(position).mHargaBarang);
+        intent.putExtra("mKategori", mChildDataBase); // Mengirim informasi kategori
         startActivity(intent);
     }
 }

@@ -36,7 +36,7 @@
     <!-- ......................................................... -->
     <string name="dropdown_kategoriBarang">Sektor Usaha</string>
     <string-array name="kategoriBarang_display">
-        <item>Pilih</item>
+        <item>Kategori Barang</item>
         <item>Pakaian Pria</item>
         <item>Pakaian Wanita</item>
         <item>Komputer</item>

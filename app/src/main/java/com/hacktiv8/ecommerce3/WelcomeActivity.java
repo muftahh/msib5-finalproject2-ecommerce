@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton loginAdmin, loginMember, loginStaff;
     private TextView register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +18,9 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_welcome);
 
         register = findViewById(R.id.register);
-        loginAdmin = findViewById(R.id.login_admin);
-        loginMember = findViewById(R.id.login_member);
-        loginStaff = findViewById(R.id.login_staff);
+        ImageButton loginAdmin = findViewById(R.id.login_admin);
+        ImageButton loginMember = findViewById(R.id.login_member);
+        ImageButton loginStaff = findViewById(R.id.login_staff);
 
         register.setOnClickListener(this);
         loginAdmin.setOnClickListener(this);

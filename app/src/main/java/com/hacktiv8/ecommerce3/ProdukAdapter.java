@@ -22,14 +22,9 @@ public class ProdukAdapter extends FirebaseRecyclerAdapter<Barang, ProdukAdapter
 
     @Override
     protected void onBindViewHolder(@NonNull viewHolder holder, int position, @NonNull Barang model) {
-        if (position < getItemCount()) {
-            holder.listNamaProduk.setText(model.getmNamaBarang());
-            holder.listHargaProduk.setText(model.getmHargaBarang());
-        } else {
-            // Handle the case where the position is invalid
-        }
+        holder.listNamaProduk.setText(model.getmNamaBarang());
+        holder.listHargaProduk.setText(model.getmHargaBarang());
     }
-
 
     @NonNull
     @Override
@@ -38,7 +33,7 @@ public class ProdukAdapter extends FirebaseRecyclerAdapter<Barang, ProdukAdapter
         return new viewHolder(view, recyclerViewInterface);
     }
 
-    public class viewHolder extends RecyclerView.ViewHolder {
+    public static class viewHolder extends RecyclerView.ViewHolder {
         TextView listNamaProduk, listHargaProduk;
         ImageButton btnDetailProduk;
 
@@ -49,17 +44,17 @@ public class ProdukAdapter extends FirebaseRecyclerAdapter<Barang, ProdukAdapter
             listHargaProduk = itemView.findViewById(R.id.listHargaProduk);
             btnDetailProduk = itemView.findViewById(R.id.btnDetailProduk);
 
-            itemView.setOnClickListener(view -> {
-                if (recyclerViewInterface != null) {
+            if (recyclerViewInterface != null) {
+                itemView.setOnClickListener(view -> {
                     int position = getBindingAdapterPosition();
-
-                    if (position != RecyclerView.NO_POSITION && position < getItemCount()) {
+                    if (position != RecyclerView.NO_POSITION) {
                         recyclerViewInterface.onDetailClick(position);
                     }
-                }
-            });
+                });
+            }
         }
-
     }
 
+
 }
+

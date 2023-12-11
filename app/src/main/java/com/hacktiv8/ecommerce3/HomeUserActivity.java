@@ -7,23 +7,33 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class HomeUserActivity extends AppCompatActivity implements View.OnClickListener {
-    private ImageButton btnPakaian, btnElektronik, btnBuku, btnLainnya;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_user);
 
-        btnPakaian = findViewById(R.id.btnPakaian);
-        btnElektronik = findViewById(R.id.btnElektronik);
-        btnBuku = findViewById(R.id.btnBuku);
-        btnLainnya = findViewById(R.id.btnLainnya);
+        ImageButton btnPakaian = findViewById(R.id.btnPakaian);
+        ImageButton btnElektronik = findViewById(R.id.btnElektronik);
+        ImageButton btnBuku = findViewById(R.id.btnBuku);
+        ImageButton btnLainnya = findViewById(R.id.btnLainnya);
+        ImageButton mlogoutBtn = findViewById(R.id.logoutBtn2);
 
         btnPakaian.setOnClickListener(this);
         btnElektronik.setOnClickListener(this);
         btnBuku.setOnClickListener(this);
         btnLainnya.setOnClickListener(this);
+
+        mlogoutBtn.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(HomeUserActivity.this, WelcomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        });
     }
 
     @Override
